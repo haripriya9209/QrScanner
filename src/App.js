@@ -1,23 +1,19 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+// import './Qrscan/index'
+import QrScan from './Qrscan/index';
+import QrReader from './Qrreader';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div style={{marginTop:"50px"}}>
+          Welcome to Qr Scanner  
+        </div> 
+        {/* <QrScan/> */}
+        <QrReader/>
       </header>
     </div>
   );

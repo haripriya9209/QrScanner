@@ -1,0 +1,25 @@
+.qr-reader-container{
+    height: 240px;
+    width: 320px;
+    margin-top: 60px;
+}
+
+.qr-reader-result{
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.result-anchor-tag{
+    color: white;
+}
+.result-anchor-tag:active{
+    color: white;
+}
+.button-styles{
+    padding: 20px;
+    border:none;
+    color: black;
+    background-color: white;
+    border-radius: 4px;
+}
