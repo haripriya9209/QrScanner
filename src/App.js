@@ -1,7 +1,5 @@
-import React, { useEffect, useState} from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import QrScan from './Qrscan/index';
 import QrReader from './Qrreader';
 import InstallPWA from './InstallApp';
 
@@ -15,9 +13,7 @@ function App() {
       <div className="centered">
         <h3>Welcome to Scanner App</h3>
         <QrReader/>
-        {/* <QrScan/> */}
       </div>
-      
     </div>
   );
 }
