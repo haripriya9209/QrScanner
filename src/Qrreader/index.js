@@ -6,7 +6,7 @@ const qrConfig = {fps: 10, qrbox: {width: 200, height: 200}};
 
 let html5QrCode;
 
-const QrReader = () =>{
+const QrReader = ({items, setItems}) =>{
 
     const [result, setResult] = useState("");
     const [display, setDisplay] = useState(true);
@@ -14,14 +14,15 @@ const QrReader = () =>{
     useEffect(()=>{
         html5QrCode = new Html5Qrcode("reader");
     }, []);
-
+    
     const handleClickAdvanced = () =>{
         setResult("");
         setDisplay(false);
-
         const qrCodeSuccessCallback = (decodeText, decodedResult)=>{
             setResult(decodeText);
+            setItems([...items, decodeText]);
             handleStop();
+            
         };
         
         html5QrCode.start(
