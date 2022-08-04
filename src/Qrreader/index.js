@@ -6,22 +6,40 @@ const qrConfig = {fps: 10, qrbox: {width: 200, height: 200}};
 
 let html5QrCode;
 
-const QrReader = () =>{
+const QrReader = ({items, setItems}) =>{
+
+    // const getLocalItems = () =>{
+    //     let items_list = localStorage.getItem("list");
+    //     let empty_Array = [];
+    //     if(items_list){
+    //         return JSON.parse(localStorage.getItem("list"));
+    //     }
+    //     else{
+    //         return empty_Array;
+    //     }
+    // }
 
     const [result, setResult] = useState("");
     const [display, setDisplay] = useState(true);
+    // const [items, setItems] = useState(getLocalItems());
 
     useEffect(()=>{
         html5QrCode = new Html5Qrcode("reader");
     }, []);
 
+    // useEffect(()=>{
+    //     localStorage.setItem("list", JSON.stringify(items));
+    // }, [items]);
+
+    
     const handleClickAdvanced = () =>{
         setResult("");
         setDisplay(false);
-
         const qrCodeSuccessCallback = (decodeText, decodedResult)=>{
             setResult(decodeText);
+            setItems([...items, decodeText]);
             handleStop();
+            
         };
         
         html5QrCode.start(
