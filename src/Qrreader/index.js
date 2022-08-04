@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Html5Qrcode } from "html5-qrcode";
-// export { Html5Qrcode } from "./html5-qrcode";
 import "./Qrreader.css";
 
 const qrConfig = {fps: 10, qrbox: {width: 200, height: 200}};
@@ -9,7 +8,8 @@ let html5QrCode;
 
 const QrReader = () =>{
 
-    const [result, setResult] = useState("Click start to scan");
+    const [result, setResult] = useState("");
+    const [display, setDisplay] = useState(true);
 
     useEffect(()=>{
         html5QrCode = new Html5Qrcode("reader");
@@ -17,6 +17,8 @@ const QrReader = () =>{
 
     const handleClickAdvanced = () =>{
         setResult("");
+        setDisplay(false);
+
         const qrCodeSuccessCallback = (decodeText, decodedResult)=>{
             setResult(decodeText);
             handleStop();
@@ -27,9 +29,11 @@ const QrReader = () =>{
             qrConfig,
             qrCodeSuccessCallback
         );
+            
     };
 
     const handleStop = () =>{
+        setDisplay(true);
         try{
             html5QrCode.stop().then((res)=>{
                 html5QrCode.clear();
@@ -40,18 +44,24 @@ const QrReader = () =>{
         }
     };
     return(
-        <div className='qr-reader-container'>
-            <div id="reader" className='qr-reader-camera'/>
-                <button className='button-styles' onClick={()=>handleClickAdvanced()} style={result?{visibility:"visible"}:{visibility:"hidden"}}>
-                    Start Scanner
-                </button>
+        <div>
+            <div className={display?"no-display":'qr-reader-container'}>
+                <div id="reader"/>
+                
                 {/* <button onClick={()=>handleStop()}>
                     Stops
                 </button> */}
-                <div className='qr-reader-result'>
+            </div>
+            <button className='button-styles' onClick={()=>handleClickAdvanced()} 
+                style={display?{visibility:"visible"}:{visibility:"hidden"}}
+                >
+                    Start Scanner
+                </button>
+            <div className='qr-reader-result' style={result?{border:"1px solid white"}:{border:"none"}}>
                     <a className='result-anchor-tag' target="_blank" href={result.includes("http")?result:false}>{result}</a>
-                </div>
+            </div>
         </div>
+        
     )
 }
 

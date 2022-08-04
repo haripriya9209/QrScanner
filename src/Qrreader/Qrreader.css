@@ -1,6 +1,5 @@
 .qr-reader-container{
-    height: 240px;
-    width: 320px;
+    width: 100%;
     margin-top: 60px;
 }
 
@@ -8,6 +7,8 @@
     display: flex;
     margin-top: 50px;
     justify-content: center;
+    padding: 20px;
+    border: 1px solid white;
 }
 
 .result-anchor-tag{
@@ -22,4 +23,8 @@
     color: black;
     background-color: white;
     border-radius: 4px;
+    margin: 20px;
+}
+.no-display{
+    display: none;
 }

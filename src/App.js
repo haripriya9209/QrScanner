@@ -1,7 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
-// import './Qrscan/index'
 import QrScan from './Qrscan/index';
 import QrReader from './Qrreader';
 import InstallPWA from './InstallApp';
