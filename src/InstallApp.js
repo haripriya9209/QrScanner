@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 const InstallPWA = () => {
     const [supportsPWA, setSupportsPWA] = useState(false);
     const [promptInstall, setPromptInstall] = useState(null);
+    const [showInstallMessage, setShowInstallMessage] = useState(false);
 
     useEffect(() => {
         const handler = e => {
@@ -36,7 +37,7 @@ const InstallPWA = () => {
     
     // Checks if should display install popup notification:
     if (isIos() && !isInStandaloneMode()) {
-        this.setState({ showInstallMessage: true });
+        setShowInstallMessage(true);
     }
 
     if (!supportsPWA) {
@@ -45,6 +46,7 @@ const InstallPWA = () => {
 
     
     return (
+        <>
         <button
         className="link-button"
         id="setup_button"
@@ -54,6 +56,12 @@ const InstallPWA = () => {
         >
         Install
         </button>
+        {showInstallMessage &&
+        (<>
+        Install from your home screen
+        </>)}
+        </>
+        
     );
 };
 
