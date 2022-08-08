@@ -28,6 +28,7 @@ const InstallPWA = () => {
     // Detects if device is on iOS 
     const isIos = () => {
         const userAgent = window.navigator.userAgent.toLowerCase();
+        console.log("isIOS");
         return /iphone|ipad|ipod/.test( userAgent );
     }
     // Detects if device is in standalone mode
@@ -37,7 +38,7 @@ const InstallPWA = () => {
     if (isIos() && !isInStandaloneMode()) {
         this.setState({ showInstallMessage: true });
     }
-    
+
     if (!supportsPWA) {
         return null;
     }
