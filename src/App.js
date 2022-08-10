@@ -5,7 +5,7 @@ import InstallPWA from './InstallApp';
 import PrintComponent from './components/PrintComponent'
 
 function App() {
-  
+
   const getLocalItems = () =>{
     let items_list = localStorage.getItem("list");
     let empty_Array = [];
@@ -22,14 +22,8 @@ function App() {
     localStorage.setItem("list", JSON.stringify(items));
 }, [items]);
 
-const clearLocal = () => {
-  localStorage.removeItem("list")
-  window.location.reload();
-}
-
   return (
     <div className="App">
-    <button onClick={() => clearLocal()}>Clear</button>
       <header className='header'>
         <InstallPWA/>
       </header>
