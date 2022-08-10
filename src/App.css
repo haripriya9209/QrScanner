@@ -13,3 +13,16 @@
   text-align: right;
   margin: 20px;
 }
+
+.dataTable-container{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  margin: 20px 00px;
+}
+
+.dataTable{
+    width: 70%;
+    height: 100%;
+}

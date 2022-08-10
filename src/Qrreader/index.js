@@ -19,8 +19,10 @@ const QrReader = ({items, setItems}) =>{
         setResult("");
         setDisplay(false);
         const qrCodeSuccessCallback = (decodeText, decodedResult)=>{
-            setResult(decodeText);
-            setItems([...items, decodeText]);
+            const x = `{"${decodeText.replaceAll("\n",'","').replaceAll(": ",'":"')}"}`
+            const y = {...JSON.parse(x)}
+            setResult(y.Name);
+            setItems([...items, y]);
             handleStop();
             
         };
@@ -58,9 +60,10 @@ const QrReader = ({items, setItems}) =>{
                 >
                     Start Scanner
                 </button>
+            {result && 
             <div className='qr-reader-result' style={result?{border:"1px solid white"}:{border:"none"}}>
-                    <a className='result-anchor-tag' target="_blank" href={result.includes("http")?result:false}>{result}</a>
-            </div>
+                    <span>{`${result} was succesfully registered.`}</span>
+            </div>}
         </div>
         
     )

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import QrReader from './Qrreader';
 import InstallPWA from './InstallApp';
-import ListItem from './ListItem';
+import ListItem from './components/ListItem';
 
 function App() {
   
@@ -22,8 +22,14 @@ function App() {
     localStorage.setItem("list", JSON.stringify(items));
 }, [items]);
 
+const clearLocal = () => {
+  localStorage.removeItem("list")
+  window.location.reload();
+}
+
   return (
     <div className="App">
+    <button onClick={() => clearLocal()}>Clear</button>
       <header className='header'>
         <InstallPWA/>
       </header>
