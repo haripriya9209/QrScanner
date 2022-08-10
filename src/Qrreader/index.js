@@ -24,7 +24,6 @@ const QrReader = ({items, setItems}) =>{
             setResult(y.Name);
             setItems([...items, y]);
             handleStop();
-            
         };
         
         html5QrCode.start(

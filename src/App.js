@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import QrReader from './Qrreader';
 import InstallPWA from './InstallApp';
-import ListItem from './components/ListItem';
+import PrintComponent from './components/PrintComponent'
 
 function App() {
   
@@ -37,7 +37,7 @@ const clearLocal = () => {
         <h3>Welcome to Scanner App</h3>
         <QrReader items={items} setItems={setItems}/>
       </div>
-      <ListItem items={items}/>
+      <PrintComponent items={items} />
     </div>
   );
 }
