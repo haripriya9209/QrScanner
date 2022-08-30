@@ -3,6 +3,7 @@ import './App.css';
 import QrReader from './Qrreader';
 import InstallPWA from './InstallApp';
 import PrintComponent from './components/PrintComponent'
+import Template from './components/Template'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
     }
   }
   const [items, setItems] = useState(getLocalItems);
+  const [template, setTemplate] = useState()
 
   useEffect(()=>{
     localStorage.setItem("list", JSON.stringify(items));
@@ -28,8 +30,9 @@ function App() {
         <InstallPWA/>
       </header>
       <div className="centered">
+        <Template setTemplate={setTemplate} />
         <QrReader items={items} setItems={setItems}/>
-        <PrintComponent items={items} />
+        <PrintComponent items={items} template={template} />
       </div>
       <div className="logo-container">
         <img className="logo" src="powered-by-logo.png" alt="logo"></img>

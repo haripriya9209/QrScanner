@@ -84,6 +84,11 @@
   justify-content: center;
 }
 
+.print-box label{
+  border-bottom: 0.5px solid lightgray;
+  padding: 0px 20px 8px 0px;
+}
+
 .print-text-resize{
   font-size: 20px;
   margin-top: 20px;
@@ -98,4 +103,64 @@
 
 .logo{
   height: 80px;
+}
+
+.template-container{
+  position: absolute;
+  left: 50px;
+  top: 50px;
+}
+
+.template-button{
+    padding: 20px 30px;
+    background: #572148;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 20px;
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+}
+
+.template-button:hover{
+    background: white;
+    color: #572148;
+}
+
+.modal{
+  height: 300px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.design-template{
+  border: 2px solid gray;
+  border-radius: 20px;
+  height: 80%;
+  width: 40%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.design-template-selected{
+  border: 2px solid green;
+}
+
+.design-template:hover{
+  border: 2px solid lightgray;
+}
+
+.qr-image{
+  width: 50%;
+}
+
+.modal-img{
+  width: 100%;
 }

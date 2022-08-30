@@ -10,6 +10,7 @@ const QrReader = ({items, setItems}) =>{
 
     const [result, setResult] = useState("");
     const [display, setDisplay] = useState(true);
+    const [cancel, setCancel] = useState(false)
 
     useEffect(()=>{
         html5QrCode = new Html5Qrcode("reader");
@@ -18,6 +19,7 @@ const QrReader = ({items, setItems}) =>{
     const handleClickAdvanced = () =>{
         setResult("");
         setDisplay(false);
+        setCancel(true)
         const qrCodeSuccessCallback = (decodeText, decodedResult)=>{
             const x = `{"${decodeText.replaceAll("\n",'","').replaceAll(": ",'":"')}"}`
             const y = {...JSON.parse(x)}
@@ -39,6 +41,7 @@ const QrReader = ({items, setItems}) =>{
         try{
             html5QrCode.stop().then((res)=>{
                 html5QrCode.clear();
+                setCancel(false);
             })
         }
         catch(err){
@@ -50,16 +53,10 @@ const QrReader = ({items, setItems}) =>{
             <div className="qr-parent">
                 <div className={display?"no-display":'qr-reader-container'}>
                     <div id="reader"/>
-                    
-                    {/* <button onClick={()=>handleStop()}>
-                        Stops
-                    </button> */}
                 </div>
-                {result &&
-                    <button className='button-styles' >
-                        SCAN
-                    </button>
-                }
+                {cancel && <button className='button-styles' onClick={()=>handleStop()}>
+                    Stop
+                </button>}
                 <button className='button-styles' onClick={()=>handleClickAdvanced()} 
                     style={display?{visibility:"visible"}:{visibility:"hidden"}}
                     >

@@ -3,7 +3,7 @@ import QRCode from "react-qr-code";
 
 export class ComponentToPrint extends React.PureComponent {
     render() {
-      const { selectedItem } = this.props
+      const { selectedItem, template } = this.props
       const details = {
         name: selectedItem['Name'],
         email: selectedItem['Email Id'],
@@ -14,6 +14,11 @@ export class ComponentToPrint extends React.PureComponent {
       return (
         <div className="preview">
           <div className="cand-info">
+            {template === 0 && 
+              <div className="qr-result">
+                <QRCode value={JSON.stringify(details)} />
+              </div>
+            }
             <div className="print-box-container">
               <div className="print-box">
                 <label>Name </label>
@@ -32,9 +37,11 @@ export class ComponentToPrint extends React.PureComponent {
                 <span className="print-text-resize">{selectedItem['Booking Id']}</span>
               </div>
             </div>
-            <div className="qr-result">
-              <QRCode value={JSON.stringify(details)} />
-            </div>
+            {template === 1 && 
+              <div className="qr-result">
+                <QRCode value={JSON.stringify(details)} />
+              </div>
+            }
           </div>
           <div className="logo-container">
             <img className="logo" src="powered-by-logo.png" alt="logo"></img>
