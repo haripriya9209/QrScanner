@@ -37,10 +37,12 @@ const QrReader = ({items, setItems}) =>{
     };
 
     const handleStop = () =>{
-        setDisplay(true);
+        
         try{
             html5QrCode.stop().then((res)=>{
+                setDisplay(true);
                 html5QrCode.clear();
+            }).then(() => {
                 setCancel(false);
             })
         }

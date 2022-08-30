@@ -3,7 +3,7 @@ import QRCode from "react-qr-code";
 
 export class ComponentToPrint extends React.PureComponent {
     render() {
-      const { selectedItem, template } = this.props
+      const { selectedItem, template = 0 } = this.props
       const details = {
         name: selectedItem['Name'],
         email: selectedItem['Email Id'],
