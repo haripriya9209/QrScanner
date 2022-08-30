@@ -46,24 +46,31 @@ const QrReader = ({items, setItems}) =>{
         }
     };
     return(
-        <div>
-            <div className={display?"no-display":'qr-reader-container'}>
-                <div id="reader"/>
-                
-                {/* <button onClick={()=>handleStop()}>
-                    Stops
-                </button> */}
-            </div>
-            <button className='button-styles' onClick={()=>handleClickAdvanced()} 
-                style={display?{visibility:"visible"}:{visibility:"hidden"}}
-                >
-                    Start Scanner
+        <>
+            <div className="qr-parent">
+                <div className={display?"no-display":'qr-reader-container'}>
+                    <div id="reader"/>
+                    
+                    {/* <button onClick={()=>handleStop()}>
+                        Stops
+                    </button> */}
+                </div>
+                {result &&
+                    <button className='button-styles' >
+                        SCAN
+                    </button>
+                }
+                <button className='button-styles' onClick={()=>handleClickAdvanced()} 
+                    style={display?{visibility:"visible"}:{visibility:"hidden"}}
+                    >
+                        SCAN
                 </button>
-            {result && 
-            <div className='qr-reader-result' style={result?{border:"1px solid white"}:{border:"none"}}>
-                    <span>{`${result} was succesfully registered.`}</span>
-            </div>}
-        </div>
+                {result && 
+                <div className='qr-reader-result' style={result?{border:"1px solid white"}:{border:"none"}}>
+                        <span>{`${result} was succesfully registered.`}</span>
+                </div>}
+            </div>
+        </>
         
     )
 }

@@ -28,10 +28,12 @@ function App() {
         <InstallPWA/>
       </header>
       <div className="centered">
-        <h3>Welcome to Scanner App</h3>
         <QrReader items={items} setItems={setItems}/>
+        <PrintComponent items={items} />
       </div>
-      <PrintComponent items={items} />
+      <div className="logo-container">
+        <img className="logo" src="powered-by-logo.png" alt="logo"></img>
+      </div>
     </div>
   );
 }
