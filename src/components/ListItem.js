@@ -19,10 +19,11 @@ const ListItem = ({loading, items, setSelectedItem, handlePrint }) =>{
         DataStore.delete(todelete);
         // window.location.reload();
     }
-    
+    // console.log(items);
     return (
         <div className="dataTable-container">
             <div className="dataTable">
+                
                 <Table
                     keyField="id"
                     data={items}
