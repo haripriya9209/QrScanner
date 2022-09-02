@@ -3,7 +3,7 @@ import { useReactToPrint } from 'react-to-print';
 import ListItem from './ListItem';
 import { ComponentToPrint } from './ComponentToPrint';
 
-export default function PrintComponent({items, template}) {
+export default function PrintComponent({items, template, setItems}) {
   let componentRef = useRef();
   const onBeforeGetContentResolve = useRef(null);
   const [selectedItem, setSelectedItem] = useState({})
@@ -31,7 +31,7 @@ export default function PrintComponent({items, template}) {
   return (
     <>
       <div className="print-container">
-      <ListItem loading={loading} items={items} setSelectedItem={setSelectedItem} handlePrint={handlePrint} />
+      <ListItem loading={loading} items={items} setSelectedItem={setSelectedItem} handlePrint={handlePrint} setItems={setItems}/>
         <div style={{display: "none"}}>
           <ComponentToPrint selectedItem={selectedItem} ref={componentRef} template={template} />
         </div>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Html5Qrcode } from "html5-qrcode";
 import "./Qrreader.css";
+import { DataStore } from "@aws-amplify/datastore";
+import {UserData} from "./../models";
 
 const qrConfig = {fps: 10, qrbox: {width: 200, height: 200}};
 
@@ -12,6 +14,16 @@ const QrReader = ({items, setItems}) =>{
     const [display, setDisplay] = useState(true);
     const [cancel, setCancel] = useState(false)
 
+    async function onCreate(entry) {
+        await DataStore.save(new UserData({ 
+            name: entry["Name"],
+            email: entry["Email Id"],
+            phoneNumber: entry["Phone Number"],
+            bookingId: entry["Booking Id"],
+        }))
+        // window.location.reload();
+    }
+
     useEffect(()=>{
         html5QrCode = new Html5Qrcode("reader");
     }, []);
@@ -21,10 +33,11 @@ const QrReader = ({items, setItems}) =>{
         setDisplay(false);
         setCancel(true)
         const qrCodeSuccessCallback = (decodeText, decodedResult)=>{
-            const x = `{"${decodeText.replaceAll("\n",'","').replaceAll(": ",'":"')}"}`
-            const y = {...JSON.parse(x)}
-            setResult(y.Name);
-            setItems([...items, y]);
+            const entryText = `{"${decodeText.replaceAll("\n",'","').replaceAll(": ",'":"')}"}`
+            const entry = {...JSON.parse(entryText)}
+            onCreate(entry);
+            setResult(entry.Name);
+            setItems([...items, entry]);
             handleStop();
         };
         

@@ -5,10 +5,10 @@ export class ComponentToPrint extends React.PureComponent {
     render() {
       const { selectedItem, template = 0 } = this.props
       const details = {
-        name: selectedItem['Name'],
-        email: selectedItem['Email Id'],
-        number: selectedItem['Phone Number'],
-        bookingId: selectedItem['Booking Id'],
+        name: selectedItem['name'],
+        email: selectedItem['email'],
+        number: selectedItem['phoneNumber'],
+        bookingId: selectedItem['bookingId'],
       }
       console.log(JSON.stringify(details))
       return (
@@ -22,19 +22,19 @@ export class ComponentToPrint extends React.PureComponent {
             <div className="print-box-container">
               <div className="print-box">
                 <label>Name </label>
-                <span className="print-text-resize">{selectedItem['Name']}</span>
+                <span className="print-text-resize">{selectedItem['name']}</span>
               </div>
               <div className="print-box">
                 <label>Email </label>
-                <span className="print-text-resize">{selectedItem['Email Id']}</span>
+                <span className="print-text-resize">{selectedItem['email']}</span>
               </div>
               <div className="print-box">
                 <label>Number </label>
-                <span className="print-text-resize">{selectedItem['Phone Number']}</span>
+                <span className="print-text-resize">{selectedItem['phoneNumber']}</span>
               </div>
               <div className="print-box">
                 <label>Booking Id </label>
-                <span className="print-text-resize">{selectedItem['Booking Id']}</span>
+                <span className="print-text-resize">{selectedItem['bookingId']}</span>
               </div>
             </div>
             {template === 1 && 

@@ -1,0 +1,15 @@
+projects:
+  qrscanner:
+    schemaPath: amplify/backend/api/qrscanner/build/schema.graphql
+    includes:
+      - src/graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: src/graphql
+        region: ap-southeast-1
+        apiId: null
+        maxDepth: 2

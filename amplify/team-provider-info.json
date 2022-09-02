@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-qrscanner-dev-140334-authRole",
+      "UnauthRoleArn": "arn:aws:iam::344269040775:role/amplify-qrscanner-dev-140334-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::344269040775:role/amplify-qrscanner-dev-140334-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-qrscanner-dev-140334-deployment",
+      "UnauthRoleName": "amplify-qrscanner-dev-140334-unauthRole",
+      "StackName": "amplify-qrscanner-dev-140334",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:344269040775:stack/amplify-qrscanner-dev-140334/c5aba410-29d0-11ed-98ec-0a6e5c8957fe",
+      "AmplifyAppId": "d18gx3celbuxx0"
+    }
+  }
+}
