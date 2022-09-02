@@ -1,18 +1,23 @@
 import { Table, Column, MenuItem } from 'react-rainbow-components';
+import { DataStore } from "@aws-amplify/datastore";
+import {UserData} from "./../models";
 
 const ListItem = ({loading, items, setSelectedItem, handlePrint }) =>{
-
-    const deleteItem = (id) => {
-        const list = JSON.parse(localStorage.list)
-        if(list){
-            list.map(i => {
-                if(i['Booking Id'] === id){
-                    list.pop(i)
-                }
-            })
-        }
-        localStorage.setItem("list", JSON.stringify(list));
-        window.location.reload();
+    
+    const deleteItem = async (id) => {
+        // const list = JSON.parse(localStorage.list)
+        // if(list){
+        //     list.map(i => {
+        //         if(i['Booking Id'] === id){
+        //             list.pop(i)
+        //         }
+        //     })
+        // }
+        // localStorage.setItem("list", JSON.stringify(list));
+        // window.location.reload();
+        const todelete = await DataStore.query(UserData, id);
+        DataStore.delete(todelete);
+        // window.location.reload();
     }
     
     return (
@@ -23,12 +28,12 @@ const ListItem = ({loading, items, setSelectedItem, handlePrint }) =>{
                     data={items}
                     isLoading={loading}
                 >
-                    <Column header="Name" field="Name" />
-                    <Column header="Email" field="Email Id" />
-                    <Column header="Number" field="Phone Number" />
-                    <Column header="Booking Id" field="Booking Id" />
+                    <Column header="Name" field="name" />
+                    <Column header="Email" field="email" />
+                    <Column header="Number" field="phoneNumber" />
+                    <Column header="Booking Id" field="bookingId" />
                     <Column type="action">
-                        <MenuItem label="Delete" onClick={(event, data) => deleteItem(data['Booking Id'])} />
+                        <MenuItem label="Delete" onClick={(event, data) => deleteItem(data['id'])} />
                         <MenuItem label="Print" onClick={(event, data) => {setSelectedItem(data);handlePrint()}} />
                     </Column>
                 </Table>
