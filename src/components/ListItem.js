@@ -25,8 +25,8 @@ const ListItem = ({loading, items, setSelectedItem, handlePrint }) =>{
             <div className="dataTable">
                 
                 <Table
-                    keyField="id"
                     data={items}
+                    keyField="id"
                     isLoading={loading}
                 >
                     <Column header="Name" field="name" />
