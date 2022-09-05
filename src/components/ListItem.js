@@ -26,7 +26,7 @@ const ListItem = ({loading, items, setSelectedItem, handlePrint }) =>{
                 
                 <Table
                     data={items}
-                    keyField="id"
+                    keyField="bookingId"
                     isLoading={loading}
                 >
                     <Column header="Name" field="name" />
